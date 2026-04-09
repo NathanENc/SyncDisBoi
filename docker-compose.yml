@@ -1,0 +1,21 @@
+services:
+  syncdisboi:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: syncdisboi
+    network_mode: host
+    environment:
+      SPOTIFY_CLIENT_ID: ${SPOTIFY_CLIENT_ID}
+      SPOTIFY_CLIENT_SECRET: ${SPOTIFY_CLIENT_SECRET}
+      YTMUSIC_CLIENT_ID: ${YTMUSIC_CLIENT_ID}
+      YTMUSIC_CLIENT_SECRET: ${YTMUSIC_CLIENT_SECRET}
+      TIDAL_CLIENT_ID: ${TIDAL_CLIENT_ID}
+      TIDAL_CLIENT_SECRET: ${TIDAL_CLIENT_SECRET}
+      BROWSER: /tmp/browser.sh
+    volumes:
+      - syncdisboi_config:/root/.config/SyncDisBoi
+    command: ["sleep", "infinity"]
+
+volumes:
+  syncdisboi_config:
